@@ -12,3 +12,8 @@ conda env create -f environment.yml
 ```shell
 conda env update -f environment.yml
 ```
+
+## 安装clang python的方法
+```
+conda install python-clang libclang
+```
