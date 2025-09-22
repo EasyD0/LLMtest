@@ -100,9 +100,10 @@ if __name__ == '__main__':
 '''
 
 if __name__ == '__main__':
-    newhash = "80036b3c09c6673f020607074016e8523b994914"
-    oldhash = "730e25ae261488060fb8f89847d972672a734e7e"
+    oldhash = "80036b3c09c6673f020607074016e8523b994914"
+    newhash = "36079d22971fdd8ca2f372edef906b489df6366e"
     print(changed_lines_between_commits("./","preprocess/a.py",oldhash, newhash))
     print(changed_lines_between_commits("./","preprocess/a.py",newhash, oldhash))
+    
     print(get_changed_lines("./","preprocess/a.py",oldhash,newhash))
     print(get_changed_lines("./","preprocess/a.py",newhash, oldhash))
