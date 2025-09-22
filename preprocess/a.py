@@ -4,9 +4,10 @@
 - changed_lines_between_commits(repo_path, file_path, old_commit, new_commit)
 
 """
-from git import Repo
+
 import difflib
 from typing import List
+import git
 
 
 def changed_lines_between_commits(repo_path: str, file_path: str, old_commit: str, new_commit: str) -> List[int]:
@@ -22,7 +23,7 @@ def changed_lines_between_commits(repo_path: str, file_path: str, old_commit: st
     返回:
         整数列表，按升序排列的变更行号（new_commit 中的行号）。
     """
-
+    from git import Repo
 
     repo = Repo(repo_path)
     # 解析提交对象
@@ -74,7 +75,7 @@ def get_changed_lines(repo_path, file_path, commit_hash1, commit_hash2):
         # 只处理修改的文件
         if change.a_blob and change.b_blob:
             # 获取修改的行号
-            for line in change.diff.decode('utf-8').splitlines():
+            for line in change.diff.encode('utf-8').splitlines():
                 if line.startswith('+') and not line.startswith('+++'):
                     # 计算行号
                     line_number = change.b_blob.size - change.b_blob.data.count(b'\n', 0, change.b_blob.size) + 1
@@ -82,6 +83,8 @@ def get_changed_lines(repo_path, file_path, commit_hash1, commit_hash2):
     
     return changed_lines
 
+
+	
 
 
 '''
@@ -95,3 +98,11 @@ if __name__ == '__main__':
     else:
         print('用法: python a.py <repo_root> <file_path> <old_commit> <new_commit>')
 '''
+
+if __name__ == '__main__':
+    newhash = "80036b3c09c6673f020607074016e8523b994914"
+    oldhash = "730e25ae261488060fb8f89847d972672a734e7e"
+    print(changed_lines_between_commits("./","preprocess/a.py",oldhash, newhash))
+    print(changed_lines_between_commits("./","preprocess/a.py",newhash, oldhash))
+    print(get_changed_lines("./","preprocess/a.py",oldhash,newhash))
+    print(get_changed_lines("./","preprocess/a.py",newhash, oldhash))
