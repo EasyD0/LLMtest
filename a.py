@@ -199,7 +199,7 @@ int main(){
     return 0;
 }
 """
-    test_file_path = "test.c"
+    test_file_path = "CFile/test.c"
     with open(test_file_path, "w") as f:
         f.write(test_file_content)
 
