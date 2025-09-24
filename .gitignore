@@ -1,3 +1,5 @@
 *.exe
 *.pdf
-/PDF/*
+PDF/*
+.idea/*
+.idea
