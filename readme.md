@@ -17,3 +17,6 @@ conda env update -f environment.yml
 ```
 conda install python-clang libclang
 ```
+
+## 如何将c文件代码转为语法树
+`clang -fsyntax-only -Xclang -ast-dump .\main.c > ast_dump.txt`
