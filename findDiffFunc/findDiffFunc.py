@@ -10,7 +10,7 @@ import json
 # 例如: clang.cindex.Config.set_library_path("C:/Program Files/LLVM/bin")
 # 或者如果你使用 brew 安装在 macOS 上: clang.cindex.Config.set_library_file('/usr/local/opt/llvm/lib/libclang.dylib')
 
-
+# 已测试
 def _getCodeByLine(
     file_path: str | Path, start_line: int = None, end_line: int = None
 ) -> str:
@@ -31,7 +31,7 @@ def _getCodeByLine(
     return "".join(result_lines)
 
 
-# 待测试
+# 已测试
 def getFuncInfoInFile(
     prep_file: str, only_hash: bool = False, contain_filename: bool = True
 ) -> dict[str, dict]:
@@ -91,7 +91,7 @@ def getFuncInfoInFile(
         return []
 
 
-# 待测试
+# 已测试
 def getDiffFuncName(
     file_path1: str | Path,
     file_path2: str | Path,
